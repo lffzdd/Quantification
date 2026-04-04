@@ -172,7 +172,7 @@ print(f"    └─ 公式: {daily_vol:.6f} × √242 = {annual_vol:.4f}")
 #   Sharpe = mean(daily_excess_return) / std(daily_excess_return) × √242
 rf_daily = RISK_FREE_RATE / TRADING_DAYS  # 日无风险利率
 excess_returns = returns - rf_daily
-sharpe = excess_returns.mean() / excess_returns.std() * np.sqrt(TRADING_DAYS)
+sharpe = excess_returns.mean() / excess_returns.std(ddof=1) * np.sqrt(TRADING_DAYS)
 
 print(f"\n【3】夏普比率 (Sharpe): {sharpe:.3f}")
 print(f"    └─ 日均超额收益: {excess_returns.mean():.6f}")
